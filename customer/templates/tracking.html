@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Order</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.55),
+                    rgba(0, 0, 0, 0.55)),
+                url("https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 700px;
+        }
+
+        h1 {
+            width: fit-content;
+            margin: 0 auto 25px;
+
+            padding: 15px 35px;
+
+            color: white;
+            font-size: 38px;
+
+            background: rgba(255, 255, 255, 0.12);
+
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+
+            border: 1px solid rgba(255, 255, 255, 0.2);
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.3);
+
+            text-shadow:
+                0 2px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .track-box {
+            background: rgba(255, 255, 255, 0.08);
+
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+
+            border: 1px solid rgba(255, 255, 255, 0.18);
+
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.35);
+
+            border-radius: 25px;
+
+            padding: 35px;
+        }
+
+        .status {
+            padding: 18px 20px;
+            margin-bottom: 15px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .completed {
+            background: rgba(76, 175, 80, 0.15);
+            color: #7CFF8A;
+            border-left: 5px solid #4CAF50;
+        }
+
+        .current {
+            background: rgba(255, 165, 0, 0.15);
+            color: #FFD369;
+            border-left: 5px solid orange;
+
+            animation: pulse 1.5s infinite;
+        }
+
+        .pending {
+            background: rgba(255, 255, 255, 0.08);
+            color: #d6d6d6;
+            border-left: 5px solid #888;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.02);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .delivery-time {
+            margin-top: 25px;
+            text-align: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .home-btn {
+            text-decoration: none;
+            color: white;
+
+            background: linear-gradient(135deg,
+                    #ff4d2e,
+                    #ff7a59);
+
+            padding: 16px 28px;
+
+            border-radius: 50px;
+
+            font-size: 16px;
+            font-weight: bold;
+
+            transition: 0.3s ease;
+
+            border: 1px solid rgba(255, 255, 255, 0.2);
+
+            box-shadow:
+                0 8px 20px rgba(255, 77, 46, 0.4);
+        }
+
+        .home-btn:hover {
+            transform:
+                translateY(-4px) scale(1.05);
+
+            box-shadow:
+                0 12px 25px rgba(255, 77, 46, 0.6);
+        }
+
+        .orders-btn {
+            background: linear-gradient(135deg,
+                    #ff512f,
+                    #dd2476);
+
+            box-shadow:
+                0 8px 20px rgba(221, 36, 118, 0.4);
+        }
+
+        .deliver-btn {
+            background: linear-gradient(135deg,
+                    #11998e,
+                    #38ef7d);
+
+            box-shadow:
+                0 8px 20px rgba(56, 239, 125, 0.4);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🚚 Track Your Order</h1>
+
+        <div class="track-box">
+
+            <div class="status completed">
+                ✅ Order Confirmed
+            </div>
+
+            <div class="status completed">
+                ✅ Restaurant Accepted
+            </div>
+
+            <div class="status current">
+                🍳 Preparing Your Food
+            </div>
+
+            <div class="status pending">
+                🚚 Out For Delivery
+            </div>
+
+            <div class="status pending">
+                📦 Delivered
+            </div>
+
+            <div class="delivery-time" style="text-align:center;font-size:70px;margin-bottom:20px;">
+                🚚 Estimated Delivery Time: 25 Minutes
+            </div>
+
+        </div>
+
+        <div class="button-group">
+
+            <a href="{% url 'order_history' %}" class="home-btn">
+                📦 View Orders
+            </a>
+
+            <a href="{% url 'delivered' %}" class="home-btn">
+                ✅ Mark as Delivered
+            </a>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

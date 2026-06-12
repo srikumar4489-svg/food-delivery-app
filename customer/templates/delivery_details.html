@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url("https://images.unsplash.com/photo-1504674900247-0877df9cc836") no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+        }
+
+        h1 {
+            background: #ff4d2e;
+            color: white;
+            text-align: center;
+            padding: 18px;
+            margin: 0;
+        }
+
+        form {
+            width: 50%;
+            margin: 30px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            
+
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.2),
+                inset 0 1px 1px rgba(255, 255, 255, 0.3);
+
+        }
+
+        label {
+            display: block;
+            margin-bottom: 15px;
+            font-weight: bold;
+            color: white;
+        }
+
+        
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: black;
+
+        }
+
+        textarea {
+            height: 100px;
+            resize: none;
+        }
+
+        button {
+            width: 100%;
+            background: #ff4d2e;
+            color: white;
+            border: none;
+            padding: 14px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #e63e20;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Delivery Details</h1>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <label for="">Name
+            <input type="text" name="name" placeholder="Full Name" required>
+        </label>
+
+        <label for="">Phone Number
+            <input type="text" name="phone" placeholder="Phone Number" required>
+        </label>
+
+        <label for="">Address
+            <textarea name="address" placeholder="Address" required></textarea>
+        </label>
+
+        <label for="">City
+            <input type="text" name="city" placeholder="City" required>
+        </label>
+
+        <label for="">Pin-Code
+            <input type="text" name="pincode" placeholder="Pincode" required>
+        </label>
+
+        <button type="submit">
+            Confirm to Payment
+        </button>
+
+    </form>
+</body>
+
+</html>

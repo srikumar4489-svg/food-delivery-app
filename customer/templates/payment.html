@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.55),
+                    rgba(0, 0, 0, 0.55)),
+                url("https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 65%;
+            margin: 40px auto;
+        }
+
+        h1 {
+            text-align: center;
+
+            color: white;
+
+            font-size: 42px;
+
+            margin-bottom: 30px;
+
+            text-shadow:
+                0 0 15px rgba(255, 255, 255, 0.3);
+        }
+
+        .box {
+            background: rgba(255, 255, 255, 0.12);
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            border: 1px solid rgba(255, 255, 255, 0.15);
+
+            padding: 25px;
+
+            margin-top: 20px;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 8px 30px rgba(0, 0, 0, 0.3);
+
+            transition: 0.3s;
+        }
+
+        .box:hover {
+            transform: translateY(-5px);
+        }
+
+        .box h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .amount-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 14px 0;
+            color: white;
+            font-size: 18px;
+        }
+
+        .total {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ffd700;
+        }
+
+        .payment-option {
+            padding: 15px;
+
+            margin: 12px 0;
+
+            border-radius: 12px;
+
+            background: rgba(255, 255, 255, 0.08);
+
+            color: white;
+
+            transition: 0.3s;
+        }
+
+        .payment-option:hover {
+
+            background: rgba(255, 255, 255, 0.18);
+
+            transform: translateX(5px);
+        }
+
+        .payment-option input {
+            margin-right: 10px;
+        }
+
+        .pay-btn {
+            width: 100%;
+
+            padding: 18px;
+
+            border: none;
+
+            border-radius: 12px;
+
+            font-size: 22px;
+
+            font-weight: bold;
+
+            color: white;
+
+            cursor: pointer;
+
+            background: linear-gradient(135deg,
+                    #ff4d2e,
+                    #ff7a59);
+
+            box-shadow:
+                0 10px 25px rgba(255, 77, 46, 0.4);
+
+            transition: 0.3s;
+        }
+
+        .pay-btn:hover {
+
+            transform:
+                translateY(-3px) scale(1.02);
+
+            box-shadow:
+                0 15px 35px rgba(255, 77, 46, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>💳 Secure Payment</h1>
+
+        <div class="box">
+
+            <h2>🧾 Bill Summary</h2>
+
+            <div class="amount-row">
+                <span>Subtotal</span>
+                <span>₹{{ subtotal }}</span>
+            </div>
+
+            <div class="amount-row">
+                <span>Delivery Charge</span>
+                <span>₹{{ delivery_charge }}</span>
+            </div>
+
+            <div class="amount-row">
+                <span>GST (5%)</span>
+                <span>₹{{ tax|floatformat:2 }}</span>
+            </div>
+
+            <hr>
+
+            <div class="amount-row total">
+                <span>Total</span>
+                <span>₹{{ total|floatformat:2 }}</span>
+            </div>
+
+        </div>
+
+        <div class="box">
+
+            <h2>💰 Select Payment Method</h2>
+
+            <div class="payment-option">
+                <input type="radio" name="payment" checked>
+                Cash on Delivery
+            </div>
+
+            <div class="payment-option">
+                <input type="radio" name="payment">
+                UPI
+            </div>
+
+            <div class="payment-option">
+                <input type="radio" name="payment">
+                Credit / Debit Card
+            </div>
+
+            <div class="payment-option">
+                <input type="radio" name="payment">
+                Net Banking
+            </div>
+
+            <a href="{% url 'place_order' %}">
+                <button class="pay-btn">
+                    🔒 Pay ₹{{ total|floatformat:2 }}
+                </button>
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

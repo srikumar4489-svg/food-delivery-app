@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmed</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+
+            margin: 0;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            min-height: 100vh;
+
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.55),
+                    rgba(0, 0, 0, 0.55)),
+                url("https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .box {
+
+            width: 500px;
+
+            padding: 45px;
+
+            text-align: center;
+
+            background: rgba(255, 255, 255, 0.12);
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            border: 1px solid rgba(255, 255, 255, 0.2);
+
+            border-radius: 25px;
+
+            box-shadow:
+                0 10px 35px rgba(0, 0, 0, 0.35);
+
+            animation: fadeUp 0.8s ease;
+        }
+
+        .icon {
+            font-size: 90px;
+            margin-bottom: 15px;
+
+            animation: pop 1.5s infinite;
+        }
+
+        @keyframes pop {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        h1 {
+            color: #4CAF50;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: white;
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        .delivery-time {
+
+            margin-top: 15px;
+
+            display: inline-block;
+
+            background: rgba(255, 255, 255, 0.15);
+
+            padding: 12px 20px;
+
+            border-radius: 30px;
+
+            color: #FFD700;
+
+            font-weight: bold;
+        }
+
+        .btn {
+
+            display: inline-block;
+
+            margin: 12px 8px 0;
+
+            padding: 12px 22px;
+
+            border-radius: 10px;
+
+            text-decoration: none;
+
+            color: white;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .orders-btn {
+
+            background: linear-gradient(135deg,
+                    #28a745,
+                    #34d058);
+        }
+
+        .track-btn {
+
+            background: linear-gradient(135deg,
+                    #ff4d2e,
+                    #ff7a59);
+        }
+
+        .btn:hover {
+
+            transform:
+                translateY(-4px);
+
+            box-shadow:
+                0 10px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        @keyframes fadeUp {
+
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+
+        <div class="icon">
+            ✅
+        </div>
+
+        <h1>Order Placed Successfully!</h1>
+
+        <p>
+            Your delicious food is being prepared by the restaurant.
+        </p>
+
+        <p>
+            Sit back and relax while we deliver it fresh to your doorstep 🚚
+        </p>
+
+        <div class="delivery-time">
+            ⏱ Estimated Delivery: 30 Minutes
+        </div>
+
+        <br><br>
+
+        <a href="{% url 'order_history' %}" class="btn orders-btn">
+            📦 View Orders
+        </a>
+
+        <a href="{% url 'track_order' %}" class="btn track-btn">
+            🚚 Track Order
+        </a>
+
+    </div>
+</body>
+
+</html>

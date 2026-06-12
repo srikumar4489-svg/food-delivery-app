@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Delivery App</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: url("https://images.unsplash.com/photo-1504674900247-0877df9cc836") no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+        }
+
+        .overlay {
+            background: rgba(0, 0, 0, 0.6);
+            min-height: 100vh;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 30px;
+            background: rgba(255, 255, 255, 0.08);
+
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .welcome-user {
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            z-index: 2;
+        }
+
+        .logo {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 38px;
+            font-weight: bold;
+
+            text-shadow:
+                0 0 10px rgba(255, 255, 255, 0.4),
+                0 0 20px rgba(255, 77, 46, 0.6);
+        }
+
+        .menu-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 32px;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+
+            right: 20px;
+            top: 75px;
+
+            min-width: 220px;
+
+            background: rgba(255, 255, 255, 0.15);
+
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+
+            border: 1px solid rgba(255, 255, 255, 0.2);
+
+            border-radius: 16px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.25);
+
+            animation: dropdownFade 0.3s ease;
+        }
+
+        .dropdown-menu a {
+            display: block;
+
+            padding: 15px 20px;
+
+            text-decoration: none;
+
+            color: white;
+
+            font-weight: 600;
+
+            transition: 0.3s;
+        }
+
+        .dropdown-menu a:hover {
+            background: rgba(255, 255, 255, 0.15);
+
+            padding-left: 28px;
+
+            color: #ffb199;
+        }
+
+        @keyframes dropdownFade {
+
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* HERO */
+
+        .hero {
+            text-align: center;
+            padding: 120px 20px;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            margin-bottom: 20px;
+            text-shadow:
+                0 5px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .hero p {
+            font-size: 22px;
+            color: #f1f1f1;
+        }
+
+        .btn {
+            display: inline-block;
+
+            margin: 15px;
+
+            padding: 14px 28px;
+
+            border-radius: 12px;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            color: white;
+
+            background: linear-gradient(135deg,
+                    #ff4d2e,
+                    #ff7a59);
+
+            box-shadow:
+                0 8px 20px rgba(255, 77, 46, 0.4);
+
+            transition: 0.3s;
+        }
+
+
+        .btn:hover {
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 15px 30px rgba(255, 77, 46, 0.5);
+        }
+
+        /* FEATURES */
+
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin: 0px auto;
+            width: 90%;
+        }
+
+        .feature-box {
+            width: 300px;
+
+            padding: 30px;
+
+            text-align: center;
+
+            background: rgba(255, 255, 255, 0.12);
+
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+
+            border: 1px solid rgba(255, 255, 255, 0.2);
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.3);
+
+            transition: 0.4s;
+        }
+
+        .feature-box:hover {
+            transform:
+                translateY(-10px) scale(1.03);
+        }
+
+        .feature-box h3 {
+            color: #fff;
+        }
+
+        .feature-box p {
+            color: #f1f1f1;
+        }
+
+        /* FOOTER */
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+
+            background: rgba(0, 0, 0, 0.4);
+
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+
+            color: white;
+
+            margin-top: 50px;
+        }
+
+        /* MOBILE */
+
+        @media(max-width:768px) {
+
+            .navbar {
+                padding: 15px;
+            }
+
+            .logo {
+                font-size: 24px;
+            }
+
+            .welcome-user {
+                font-size: 14px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .feature-box {
+                width: 90%;
+            }
+        }
+
+        .hero h1,
+        .hero p,
+        .btn {
+            animation: fadeUp 1s ease;
+        }
+
+        @keyframes fadeUp {
+
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="overlay">
+
+        <!-- NAVBAR -->
+
+        <div class="navbar">
+
+            <div class="welcome-user">
+                👋 Welcome, {{ user.first_name }}
+            </div>
+
+            <h2 class="logo">
+                🍔 Food Delivery App
+            </h2>
+
+            <div>
+                <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+                <div id="dropdownMenu" class="dropdown-menu">
+
+                    <a href="#">
+                        👱 {{ user.first_name }}
+                    </a>
+
+                    <a href="{% url 'customer_restaurant_list' %}">
+                        🍽 Restaurants
+                    </a>
+
+                    <a href="{% url 'order_history' %}">
+                        📦 Orders
+                    </a>
+
+                    <a href="{% url 'logout' %}">
+                        🚪 Logout
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- HERO -->
+
+        <div class="hero">
+
+            <h1>Delicious Food Delivered Fast 🚀</h1>
+
+            <p>
+                Order from your favourite restaurants and enjoy hot meals at home
+            </p>
+
+            <a class="btn" href="{% url 'customer_restaurant_list' %}">
+                View Restaurants
+            </a>
+
+            <a class="btn" href="{% url 'food_list' %}">
+                View Foods
+            </a>
+
+        </div>
+
+        <!-- FEATURES -->
+
+        <div class="features">
+
+            <div class="feature-box">
+                <h3>🍕 Order Food</h3>
+                <p>
+                    Browse restaurants and order your favourite meals easily.
+                </p>
+            </div>
+
+            <div class="feature-box">
+                <h3>🚚 Fast Delivery</h3>
+                <p>
+                    Get food delivered quickly to your doorstep.
+                </p>
+            </div>
+
+            <div class="feature-box">
+                <h3>🛒 Easy Cart</h3>
+                <p>
+                    Add items, manage quantity and checkout smoothly.
+                </p>
+            </div>
+
+        </div>
+
+        <!-- FOOTER -->
+
+        <div class="footer">
+            © 2026 Food Delivery App
+        </div>
+
+    </div>
+
+    <script>
+        function toggleMenu() {
+            let menu = document.getElementById("dropdownMenu");
+
+            if (menu.style.display === "block") {
+                menu.style.display = "none";
+            } else {
+                menu.style.display = "block";
+            }
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Delivered</title>
+
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+
+            margin: 0;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            min-height: 100vh;
+
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.45),
+                    rgba(0, 0, 0, 0.45)),
+                url("https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .box {
+            width: 450px;
+
+            padding: 40px;
+
+            text-align: center;
+
+            background: rgba(255, 255, 255, 0.12);
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            border: 1px solid rgba(255, 255, 255, 0.2);
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .icon {
+            font-size: 80px;
+
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        h1 {
+            color: #4CAF50;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: white;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+
+            margin: 10px;
+
+            padding: 12px 20px;
+
+            border-radius: 10px;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            color: white;
+
+            transition: 0.3s;
+        }
+
+        .btn:first-of-type {
+            background: linear-gradient(135deg,
+                    #28a745,
+                    #34d058);
+        }
+
+        .btn:last-of-type {
+            background: linear-gradient(135deg,
+                    #ff4d2e,
+                    #ff7a59);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <div class="icon">📦</div>
+
+        <h1>Order Delivered!</h1>
+
+        <p>Your food has been delivered successfully.</p>
+
+        <p>Thank you for ordering with us ❤️</p>
+
+        <a href="{% url 'order_history' %}" class="btn">
+            View Order History
+        </a>
+
+        <a href="{% url 'review_page' %}" class="btn">
+            Rate Your Order
+        </a>
+
+    </div>
+
+</body>
+
+</html>

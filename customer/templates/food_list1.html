@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Foods</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.45),
+                    rgba(0, 0, 0, 0.45)),
+                url("https://images.unsplash.com/photo-1504674900247-0877df9cc836") no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+
+        }
+
+        h1 {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            letter-spacing: 1px;
+        }
+
+        .food-container {
+            width: 70%;
+            margin: 30px auto;
+        }
+
+        .food-card {
+            display: flex;
+            gap: 20px;
+            padding: 18px;
+            margin-bottom: 20px;
+
+            background: rgba(255, 255, 255, 0.12);
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            border: 1px solid rgba(255, 255, 255, 0.2);
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.25);
+
+            align-items: center;
+
+            transition: all 0.3s ease;
+        }
+
+        .food-card:hover {
+            transform: translateY(-6px);
+
+            box-shadow:
+                0 12px 40px rgba(0, 0, 0, 0.35);
+        }
+
+        .food-card img {
+            width: 180px;
+            height: 130px;
+            object-fit: cover;
+
+            border-radius: 14px;
+
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .food-details {
+            flex: 1;
+        }
+
+        .food-details h2 {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .food-details p {
+            margin: 6px 0;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .price {
+            color: #ff4d2e;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .cart-btn {
+            display: inline-block;
+            margin-top: 10px;
+
+            background: linear-gradient(135deg,
+                    #ff4d2e,
+                    #ff7a59);
+
+            color: white;
+            text-decoration: none;
+
+            padding: 12px 18px;
+
+            border-radius: 10px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .cart-btn:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>All Foods</h1>
+
+    <div class="food-container">
+
+        {% for food in foods %}
+        <div class="food-card">
+
+            {% if food.image %}
+            <img src="{{ food.image.url }}" alt="{{ food.name }}">
+            {% endif %}
+
+            <div class="food-details">
+                <h2>{{ food.name }}</h2>
+
+                <p class="price">₹{{ food.price }}</p>
+
+                <p>Restaurant: {{ food.restaurant.name }}</p>
+
+                <a href="{% url 'add_to_cart' food.id %}" class="cart-btn">
+                    Add to Cart
+                </a>
+            </div>
+
+        </div>
+        {% endfor %}
+
+    </div>
+</body>
+
+</html>

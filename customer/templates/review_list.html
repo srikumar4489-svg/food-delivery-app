@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Reviews</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.65),
+                    rgba(0, 0, 0, 0.65)),
+                url("https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 0;
+            padding: 25px;
+
+            color: white;
+
+            background: rgba(255, 255, 255, 0.08);
+
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+
+            letter-spacing: 2px;
+        }
+
+        .reviews-container {
+            width: 70%;
+            margin: 40px auto;
+        }
+
+        .review-card {
+            margin-bottom: 25px;
+            padding: 25px;
+
+            border-radius: 20px;
+
+            background: rgba(255, 255, 255, 0.12);
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            border: 1px solid rgba(255, 255, 255, 0.15);
+
+            box-shadow:
+                0 8px 30px rgba(0, 0, 0, 0.25);
+
+            transition: 0.3s;
+        }
+
+        .review-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .rating {
+            font-size: 24px;
+            font-weight: bold;
+
+            color: #FFD700;
+
+            margin-bottom: 15px;
+        }
+
+        .review-text {
+            color: white;
+
+            font-size: 18px;
+
+            line-height: 1.7;
+
+            margin-bottom: 15px;
+        }
+
+        .date {
+            color: #dcdcdc;
+
+            font-size: 14px;
+
+            text-align: right;
+        }
+
+        .empty {
+            text-align: center;
+
+            margin-top: 80px;
+
+            color: white;
+
+            font-size: 24px;
+
+            background: rgba(255, 255, 255, 0.12);
+
+            padding: 30px;
+
+            border-radius: 20px;
+
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>🌟 Customer Reviews</h1>
+
+    <div class="reviews-container">
+
+        {% for review in reviews %}
+
+        <div class="review-card">
+
+            <div class="rating">
+                ⭐⭐⭐⭐⭐
+                <span style="color: white;font-size: 18px;">
+                    {{ review.rating }}/5
+                </span>
+
+            </div>
+
+            <div class="review-text">
+                {{ review.review }}
+            </div>
+
+            <div class="date">
+                🕒 {{ review.created_at }}
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <div class="empty">
+            No reviews yet 😔
+        </div>
+
+        {% endfor %}
+
+    </div>
+</body>
+
+</html>
