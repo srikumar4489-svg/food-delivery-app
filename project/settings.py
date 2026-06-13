@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-36+(5qsi+rzmeht&=fml1u4+p#ws9a$c3%9js3j796=k%!x11u'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["food-delivery-app-o0j1.onrender.com",]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -125,8 +125,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587 
 EMAIL_USE_TLS = True 
 EMAIL_HOST_USER = 'srikumar1122610@gmail.com' 
-import os
-EMAIL_HOST_PASSWORD = os.environ.get('tanejdwjmbtdwwcq')
+EMAIL_HOST_PASSWORD = 'tanejdwjmbtdwwcq'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT =  'media'
