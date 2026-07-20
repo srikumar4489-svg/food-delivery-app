@@ -23,21 +23,23 @@ def restaurant_list(request):
         'restaurant_list.html',
         {'restaurants': restaurants}
     )
+from .models import Restaurant, Food, Category
 
 def add_food(request):
 
     if request.method == "POST":
-        print(request.POST)
 
-        restaurant_id = request.POST.get("restaurant")
-        print("Restaurant ID:", restaurant_id)
+        restaurant = Restaurant.objects.get(
+            id=request.POST.get("restaurant")
+        )
 
-        restaurant = Restaurant.objects.get(id=restaurant_id)
-
-        restaurant = Restaurant.objects.first()
+        category = Category.objects.get(
+            id=request.POST.get("category")
+        )
 
         Food.objects.create(
             restaurant=restaurant,
+            category=category,
             name=request.POST.get("name"),
             description=request.POST.get("description"),
             price=request.POST.get("price"),
@@ -45,10 +47,18 @@ def add_food(request):
         )
 
         return redirect('food_list')
-    
-    restaurants = Restaurant.objects.all()
 
-    return render(request, 'add_food.html',{'restaurants': restaurants})
+    restaurants = Restaurant.objects.all()
+    categories = Category.objects.all()
+
+    return render(
+        request,
+        'add_food.html',
+        {
+            'restaurants': restaurants,
+            'categories': categories
+        }
+    )
 
 def food_list(request):
 

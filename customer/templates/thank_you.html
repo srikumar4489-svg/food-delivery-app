@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thank You</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
             font-family: Arial, sans-serif;
@@ -25,6 +31,7 @@
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
+            overflow-x: hidden;
         }
 
         .box {
@@ -166,6 +173,55 @@
             to {
                 opacity: 1;
                 transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .box {
+                width: 95%;
+                padding: 25px 15px;
+                margin: 15px;
+            }
+
+            .success-icon {
+                width: 80px;
+                height: 80px;
+                font-size: 40px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .message {
+                font-size: 16px;
+                line-height: 1.6;
+            }
+
+            .rating-box {
+                padding: 15px;
+                font-size: 18px;
+            }
+
+            .review-box {
+                font-size: 18px;
+                word-wrap: break-word;
+                padding: 12px;
+            }
+
+            .btn-group {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .btn {
+                display: block;
+                width: 100%;
+                margin: 0;
+                text-align: center;
+                padding: 14px;
             }
         }
     </style>

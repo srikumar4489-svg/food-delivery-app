@@ -29,6 +29,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            overflow-x: hidden;
+            padding: 20px;
         }
 
         .container {
@@ -181,6 +183,53 @@
             box-shadow:
                 0 8px 20px rgba(56, 239, 125, 0.4);
         }
+
+        @media (max-width:768px) {
+
+            body {
+                display: block;
+                padding: 20px 0;
+            }
+
+            .container {
+                width: 95%;
+                margin: auto;
+            }
+
+            h1 {
+                width: 100%;
+                font-size: 28px;
+                padding: 15px;
+                text-align: center;
+            }
+
+            .track-box {
+                padding: 20px;
+            }
+
+            .status {
+                font-size: 16px;
+                padding: 15px;
+            }
+
+            .delivery-time {
+                font-size: 18px;
+                line-height: 1.6;
+            }
+
+            .button-group {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .home-btn {
+                display: block;
+                width: 100%;
+                text-align: center;
+                padding: 15px;
+            }
+
+        }
     </style>
 </head>
 
@@ -212,7 +261,7 @@
                 📦 Delivered
             </div>
 
-            <div class="delivery-time" style="text-align:center;font-size:70px;margin-bottom:20px;">
+            <div class="delivery-time">
                 🚚 Estimated Delivery Time: 25 Minutes
             </div>
 

@@ -159,6 +159,21 @@
                 </select>
             </label>
 
+            <label>
+                Category
+                <select name="category">
+
+                    {% for category in categories %}
+
+                    <option value="{{ category.id }}">
+                        {{ category.name }}
+                    </option>
+
+                    {% endfor %}
+
+                </select>
+            </label>
+
             <label for="">Image
                 <input type="file" name="image" required>
             </label>

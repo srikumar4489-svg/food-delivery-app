@@ -17,16 +17,14 @@ def register_view(request):
             messages.error(request,"Email already registered")
             return redirect('register')
 
-        # OTP generate
         otp = random.randint(100000, 999999)
 
-        # store data in session (temporary)
         request.session['name'] = name
         request.session['email'] = email
         request.session['password'] = password
         request.session['otp'] = str(otp)
 
-        # send email
+
         send_mail(
             "Your OTP Code",
             f"Your OTP is {otp}",
@@ -71,46 +69,6 @@ def otp_verify(request):
 
     return render(request, 'otp_verify.html')
 
-# def otp_verify(request):
-
-#     if request.method == "POST":
-
-#         # get OTP from form
-#         user_otp = request.POST.get('otp')
-
-#         # get real OTP from session
-#         real_otp = request.session.get('otp')
-
-#         # check OTP safely
-#         if str(user_otp) == str(real_otp):
-
-#             # get stored user details
-#             name = request.session.get('name')
-#             email = request.session.get('email')
-#             password = request.session.get('password')
-
-#             # create user
-#             if email and password:
-#                 User.objects.create_user(
-#                     username=email,
-#                     email=email,
-#                     password=password
-#                     first_name=name
-#                 )
-
-#                 login(request, user)
-
-#             # redirect to customer home page
-#             return redirect('customer_home')
-
-#         # wrong OTP case
-#         return render(request, "otp_verify.html", {
-#             'error': 'Invalid OTP'
-#         })
-
-#     return render(request, "otp_verify.html")
-
-
 def log(request):
     return render(request,'index.html')
 
@@ -121,7 +79,7 @@ def login_view(request):
         email = request.POST['email']
         password = request.POST['password']
 
-        # Django normally uses username, so email use panna username=email store pannanum
+        
         user = authenticate(request, username=email, password=password)
 
         if user is not None:

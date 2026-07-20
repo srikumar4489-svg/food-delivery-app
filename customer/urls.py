@@ -21,4 +21,6 @@ urlpatterns = [
     path('delivered/', delivered, name='delivered'),
     path('review/', review_page, name='review_page'),
     path('reviews/', review_list, name='review_list'),
+    path('category/<int:id>/',category_foods,name='category_foods'),
+    path('categories/',category_list,name='category_list'),
 ]

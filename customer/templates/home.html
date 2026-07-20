@@ -31,7 +31,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 18px 30px;
+            padding: 15px 20px;
             background: rgba(255, 255, 255, 0.08);
 
             backdrop-filter: blur(15px);
@@ -46,18 +46,22 @@
 
         .welcome-user {
             color: white;
-            font-size: 18px;
+            font-size: 15px;
             font-weight: bold;
-            z-index: 2;
+            max-width: 110px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            /* z-index: 2; */
         }
 
         .logo {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
+            flex: 1;
+            /* transform: translateX(-50%); */
             color: white;
-            font-size: 38px;
+            font-size: 28px;
             font-weight: bold;
+            text-align: center;
 
             text-shadow:
                 0 0 10px rgba(255, 255, 255, 0.4),
@@ -68,9 +72,8 @@
             background: none;
             border: none;
             color: white;
-            font-size: 32px;
+            font-size: 30px;
             cursor: pointer;
-            z-index: 2;
         }
 
         .dropdown-menu {
@@ -254,30 +257,44 @@
         @media(max-width:768px) {
 
             .navbar {
-                padding: 15px;
+                padding: 12px 15px;
             }
 
             .logo {
-                font-size: 24px;
+                font-size: 20px;
+                padding: 0 10px;
             }
 
             .welcome-user {
-                font-size: 14px;
+                font-size: 12px;
+                max-width: 80px;
+            }
+
+            .menu-btn{
+                font-size: 28px;
+            }
+
+            .hero{
+                padding: 80px 15px;
             }
 
             .hero h1 {
-                font-size: 36px;
+                font-size: 34px;
+            }
+
+            .hero p{
+                font-size: 18px;
+            }
+
+            .btn{
+                display: block;
+                width: 50%;
+                margin: 30px auto;
             }
 
             .feature-box {
-                width: 90%;
+                width: 100%;
             }
-        }
-
-        .hero h1,
-        .hero p,
-        .btn {
-            animation: fadeUp 1s ease;
         }
 
         @keyframes fadeUp {
@@ -304,11 +321,16 @@
         <div class="navbar">
 
             <div class="welcome-user">
-                👋 Welcome, {{ user.first_name }}
+                👋 Welcome,
+                {% if user.first_name %}
+                {{ user.first_name }}
+                {% else %}
+                {{ user.email }}
+                {% endif %}
             </div>
 
             <h2 class="logo">
-                🍔 Food Delivery App
+                🍔 Food Delivery 
             </h2>
 
             <div>
@@ -317,8 +339,14 @@
                 <div id="dropdownMenu" class="dropdown-menu">
 
                     <a href="#">
-                        👱 {{ user.first_name }}
+                        👱
+                        {% if user.first_name %}
+                        {{ user.first_name }}
+                        {% else %}
+                        {{ user.email }}
+                        {% endif %}
                     </a>
+
 
                     <a href="{% url 'customer_restaurant_list' %}">
                         🍽 Restaurants
@@ -353,6 +381,10 @@
 
             <a class="btn" href="{% url 'food_list' %}">
                 View Foods
+            </a>
+
+            <a class="btn" href="{% url 'category_list' %}">
+                View Categories
             </a>
 
         </div>

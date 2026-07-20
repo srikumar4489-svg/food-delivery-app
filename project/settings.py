@@ -128,4 +128,4 @@ EMAIL_HOST_USER = 'srikumar1122610@gmail.com'
 EMAIL_HOST_PASSWORD = 'tanejdwjmbtdwwcq'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT =  'media'
+MEDIA_ROOT =  BASE_DIR / 'media'
